@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  backdrop-filter: blur(var(--scroll-blur, 0px));
+  -webkit-backdrop-filter: blur(var(--scroll-blur, 0px));
+  transition: backdrop-filter 0.02s linear;
+}
+
+/* Premium custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 130, 70, 0.35);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 130, 70, 0.6);
+}
+
+/* iOS Home Screen Frosted Glass Translucency (Backdrop Blur) */
+.ios-glass {
+  background-color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.dark .ios-glass {
+  background-color: rgba(24, 24, 27, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.ios-glass-card {
+  background-color: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .ios-glass-card {
+  background-color: rgba(28, 25, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Universal Apple Frosted Glass and Hover Transparency for buttons */
+button {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.82;
+  cursor: pointer;
+}
+
+button:active:not(:disabled) {
+  opacity: 0.70;
+  transform: scale(0.98);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-arabic: "Cairo", "Amiri", system-ui, sans-serif;
+  --font-amiri: "Amiri", serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+}
+
+/* Custom smooth styling */
+.font-arabic {
+  font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
+}
+
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
+
+.font-book {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Custom parchment/paper texture background */
+.bg-book-paper {
+  background-color: #fcfbf9;
+  background-image: radial-gradient(#e5ded4 0.75px, transparent 0.75px), radial-gradient(#f1ede6 0.75px, #fcfbf9 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.dark .bg-book-paper {
+  background-color: #0f1117;
+  background-image: radial-gradient(#222736 0.75px, transparent 0.75px), radial-gradient(#181b24 0.75px, #0f1117 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Dynamic Speech Synthesis Waveform Animation */
+@keyframes waveform {
+  0%, 100% {
+    height: 4px;
+    opacity: 0.5;
+  }
+  50% {
+    height: 16px;
+    opacity: 1;
+  }
+}
+
+.animate-waveform-1 {
+  animation: waveform 0.8s ease-in-out infinite;
+}
+.animate-waveform-2 {
+  animation: waveform 0.8s ease-in-out 0.15s infinite;
+}
+.animate-waveform-3 {
+  animation: waveform 0.8s ease-in-out 0.3s infinite;
+}
+.animate-waveform-4 {
+  animation: waveform 0.8s ease-in-out 0.45s infinite;
+}
+/* Resolution Presets & Viewport Containers */
+.res-container-auto {
+  width: 100%;
+  max-width: 100%;
+}
+
+.res-container-laptop {
+  max-width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.res-container-desktop {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.res-container-tablet {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.res-container-mobile {
+  max-width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.res-container-wide {
+  max-width: 2560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Universal screen scale & resolution harmony (l standar 75% f ga3 les écrans) */
+html.res-scale-75,
+#root.res-scale-75,
+.res-scale-75,
+.res-scale-compact {
+  zoom: 0.75;
+}
+
+html.res-scale-80,
+#root.res-scale-80,
+.res-scale-80 {
+  zoom: 0.8;
+}
+
+html.res-scale-85,
+#root.res-scale-85,
+.res-scale-85 {
+  zoom: 0.85;
+}
+
+html.res-scale-100,
+#root.res-scale-100,
+.res-scale-100 {
+  zoom: 1;
+}
+
